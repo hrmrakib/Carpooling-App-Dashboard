@@ -4,7 +4,7 @@ const AuthenticationAPI = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     forgotPassword: builder.mutation({
       query: (body) => ({
-        url: "/auth/forgot-password",
+        url: "/auth/send_otp/",
         method: "POST",
         body,
       }),
@@ -12,7 +12,7 @@ const AuthenticationAPI = baseAPI.injectEndpoints({
 
     verifyOTP: builder.mutation({
       query: (body) => ({
-        url: "/auth/forgot-password/otp-verify",
+        url: "/auth/verify_email/",
         method: "POST",
         body,
       }),

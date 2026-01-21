@@ -9,12 +9,15 @@ import { ArrowLeft, Mail } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useForgotPasswordMutation } from "@/redux/features/auth/authAPI";
+import { toast } from "sonner";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<{ email?: string }>({});
   const router = useRouter();
+  const [forgotPasswordMutation] = useForgotPasswordMutation();
 
   const validateForm = () => {
     const newErrors: { email?: string } = {};
@@ -37,14 +40,13 @@ export default function ForgotPasswordPage() {
     setIsLoading(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const res = await forgotPasswordMutation({ email }).unwrap();
 
-      // In a real app, you would send the reset email here
-      console.log("Password reset email sent to:", email);
-
-      // Redirect to a success page or show success message
-      alert("Password reset link has been sent to your email!");
+      console.log(res);
+      if (res?.status) {
+        toast.success(res?.message);
+        router.push("/verify-otp?email=" + email);
+      }
     } catch (error) {
       console.error("Error sending reset email:", error);
       setErrors({ email: "Failed to send reset email. Please try again." });
@@ -55,7 +57,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className='min-h-screen bg-orange-50 flex items-center justify-center'>
-      <div className='bg-[#F3F7FF] h-screen flex-1 flex items-center justify-center'>
+      <div className='hidden bg-[#F3F7FF] h-screen flex-1 lg:flex items-center justify-center'>
         <div>
           <Image
             src='/auth-img.png'
@@ -66,7 +68,7 @@ export default function ForgotPasswordPage() {
           />
         </div>
       </div>
-      <div className='bg-[#E6ECF6] h-screen flex-1 flex items-center justify-center'>
+      <div className='p-5 lg:p-0 bg-[#E6ECF6] h-screen flex-1 flex items-center justify-center'>
         <div className='bg-white rounded-2xl shadow-lg p-8 relative'>
           {/* Header */}
           <div className='text-center mb-8'>

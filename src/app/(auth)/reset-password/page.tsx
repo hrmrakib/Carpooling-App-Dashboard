@@ -68,120 +68,130 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <div className='min-h-screen bg-orange-50 flex items-center justify-center p-4'>
-      <div className='w-full max-w-md bg-white rounded-2xl shadow-lg p-8 relative'>
-        {/* Back Button */}
-        <button
-          onClick={() => router.back()}
-          className='absolute top-6 left-6 p-2 hover:bg-gray-100 rounded-full transition-colors'
-        >
-          <ArrowLeft className='w-5 h-5 text-gray-600' />
-        </button>
-
-        {/* Logo */}
-        <div className='flex items-center justify-center text-center'>
-          <Image src='/logo.png' alt='Logo' width={200} height={200} />
+    <div className='min-h-screen bg-orange-50 flex items-center justify-center'>
+      <div className='hidden bg-[#F3F7FF] h-screen flex-1 lg:flex items-center justify-center'>
+        <div>
+          <Image
+            src='/auth-img.png'
+            alt='Logo'
+            width={600}
+            height={600}
+            className='mx-auto'
+          />
         </div>
-
-        {/* Header */}
-        <div className='text-center mb-8'>
-          <h1 className='text-2xl font-bold text-gray-900 mb-2'>
-            Create New Password
-          </h1>
-          <p className='text-gray-600 text-sm'>
-            Your password must be 8-10 character long
-          </p>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className='space-y-6'>
-          {/* Password Field */}
-          <div className='space-y-2'>
-            <Label
-              htmlFor='password'
-              className='text-sm font-medium text-gray-700'
-            >
-              Password
-            </Label>
-            <div className='relative'>
-              <Lock className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4' />
-              <Input
-                id='password'
-                type={showPassword ? "text" : "password"}
-                placeholder='Enter new password'
-                value={formData.password}
-                onChange={(e) => handleInputChange("password", e.target.value)}
-                className={`pl-10 pr-10 h-12 bg-gray-50 border-gray-200 rounded-lg ${
-                  errors.password ? "border-red-500" : ""
-                }`}
-              />
-              <button
-                type='button'
-                onClick={() => setShowPassword(!showPassword)}
-                className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600'
-              >
-                {showPassword ? (
-                  <EyeOff className='w-4 h-4' />
-                ) : (
-                  <Eye className='w-4 h-4' />
-                )}
-              </button>
-            </div>
-            {errors.password && (
-              <p className='text-red-500 text-xs mt-1'>{errors.password}</p>
-            )}
-          </div>
-
-          {/* Confirm Password Field */}
-          <div className='space-y-2'>
-            <Label
-              htmlFor='confirmPassword'
-              className='text-sm font-medium text-gray-700'
-            >
-              Confirm Password
-            </Label>
-            <div className='relative'>
-              <Lock className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4' />
-              <Input
-                id='confirmPassword'
-                type={showConfirmPassword ? "text" : "password"}
-                placeholder='Re-type new password'
-                value={formData.confirmPassword}
-                onChange={(e) =>
-                  handleInputChange("confirmPassword", e.target.value)
-                }
-                className={`pl-10 pr-10 h-12 bg-gray-50 border-gray-200 rounded-lg ${
-                  errors.confirmPassword ? "border-red-500" : ""
-                }`}
-              />
-              <button
-                type='button'
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600'
-              >
-                {showConfirmPassword ? (
-                  <EyeOff className='w-4 h-4' />
-                ) : (
-                  <Eye className='w-4 h-4' />
-                )}
-              </button>
-            </div>
-            {errors.confirmPassword && (
-              <p className='text-red-500 text-xs mt-1'>
-                {errors.confirmPassword}
-              </p>
-            )}
-          </div>
-
-          {/* Submit Button */}
-          <Button
-            type='submit'
-            disabled={isLoading}
-            className='w-full h-12 bg-orange-400 hover:bg-orange-500 text-white font-medium rounded-lg transition-colors'
+      </div>
+      <div className='p-5 lg:p-0 bg-[#E6ECF6] h-screen flex-1 flex items-center justify-center'>
+        <div className='w-full max-w-md bg-white rounded-2xl shadow-lg p-8 relative'>
+          {/* Back Button */}
+          <button
+            onClick={() => router.back()}
+            className='absolute top-6 left-6 p-2 hover:bg-gray-100 rounded-full transition-colors'
           >
-            {isLoading ? "Resetting Password..." : "Reset Password"}
-          </Button>
-        </form>
+            <ArrowLeft className='w-5 h-5 text-gray-600' />
+          </button>
+
+          {/* Header */}
+          <div className='text-center mb-8'>
+            <h1 className='text-2xl font-bold text-gray-900 mb-2'>
+              Create New Password
+            </h1>
+            <p className='text-gray-600 text-sm'>
+              Your password must be 8-10 character long
+            </p>
+          </div>
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className='space-y-6'>
+            {/* Password Field */}
+            <div className='space-y-2'>
+              <Label
+                htmlFor='password'
+                className='text-base font-medium text-gray-700'
+              >
+                Password
+              </Label>
+              <div className='relative'>
+                <Lock className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4' />
+                <Input
+                  id='password'
+                  type={showPassword ? "text" : "password"}
+                  placeholder='Enter new password'
+                  value={formData.password}
+                  onChange={(e) =>
+                    handleInputChange("password", e.target.value)
+                  }
+                  className={`pl-10 pr-10 h-12 bg-gray-50 border-gray-200 rounded-4xl ${
+                    errors.password ? "border-red-500" : ""
+                  }`}
+                />
+                <button
+                  type='button'
+                  onClick={() => setShowPassword(!showPassword)}
+                  className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600'
+                >
+                  {showPassword ? (
+                    <EyeOff className='w-4 h-4' />
+                  ) : (
+                    <Eye className='w-4 h-4' />
+                  )}
+                </button>
+              </div>
+              {errors.password && (
+                <p className='text-red-500 text-xs mt-1'>{errors.password}</p>
+              )}
+            </div>
+
+            {/* Confirm Password Field */}
+            <div className='space-y-2'>
+              <Label
+                htmlFor='confirmPassword'
+                className='text-base font-medium text-gray-700'
+              >
+                Confirm Password
+              </Label>
+              <div className='relative'>
+                <Lock className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4' />
+                <Input
+                  id='confirmPassword'
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder='Re-type new password'
+                  value={formData.confirmPassword}
+                  onChange={(e) =>
+                    handleInputChange("confirmPassword", e.target.value)
+                  }
+                  className={`pl-10 pr-10 h-12 bg-gray-50 border-gray-200 rounded-4xl ${
+                    errors.confirmPassword ? "border-red-500" : ""
+                  }`}
+                />
+                <button
+                  type='button'
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600'
+                >
+                  {showConfirmPassword ? (
+                    <EyeOff className='w-4 h-4' />
+                  ) : (
+                    <Eye className='w-4 h-4' />
+                  )}
+                </button>
+              </div>
+              {errors.confirmPassword && (
+                <p className='text-red-500 text-xs mt-1'>
+                  {errors.confirmPassword}
+                </p>
+              )}
+            </div>
+
+            {/* Submit Button */}
+            <Button
+              type='submit'
+              disabled={isLoading}
+              className='w-full h-11 button'
+            >
+              {isLoading ? "Resetting Password..." : "Reset Password"}
+            </Button>
+          </form>
+        </div>
       </div>
     </div>
   );
