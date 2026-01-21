@@ -54,26 +54,30 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className='min-h-screen bg-orange-50 flex items-center justify-center p-4'>
-      <div className='w-full max-w-md'>
+    <div className='min-h-screen bg-orange-50 flex items-center justify-center'>
+      <div className='bg-[#F3F7FF] h-screen flex-1 flex items-center justify-center'>
+        <div>
+          <Image
+            src='/auth-img.png'
+            alt='Logo'
+            width={600}
+            height={600}
+            className='mx-auto'
+          />
+        </div>
+      </div>
+      <div className='bg-[#E6ECF6] h-screen flex-1 flex items-center justify-center'>
         <div className='bg-white rounded-2xl shadow-lg p-8 relative'>
-          {/* Back Button */}
-          <button
-            onClick={() => router.back()}
-            className='absolute top-6 left-6 p-2 hover:bg-gray-100 rounded-full transition-colors'
-          >
-            <ArrowLeft className='w-5 h-5 text-gray-600' />
-          </button>
-
-          {/* Logo */}
-          <div className='flex items-center justify-center text-center'>
-            <Image src='/logo.png' alt='Logo' width={200} height={200} />
-          </div>
-
           {/* Header */}
           <div className='text-center mb-8'>
-            <h1 className='text-2xl font-bold text-gray-900 mb-2'>
-              Forget Password
+            <h1 className='flex items-center justify-center gap-3 text-2xl font-bold text-gray-900 mb-2'>
+              <button
+                onClick={() => router.back()}
+                className='absolute top-6 left-6 p-2 hover:bg-gray-100 rounded-full transition-colors'
+              >
+                <ArrowLeft className='w-5 h-5 text-gray-600' />
+              </button>{" "}
+              <span>Forget Password</span>
             </h1>
             <p className='text-gray-600 text-sm'>
               Please enter your email address to reset your account password.
@@ -86,7 +90,7 @@ export default function ForgotPasswordPage() {
             <div>
               <label
                 htmlFor='email'
-                className='block text-sm font-medium text-gray-700 mb-2'
+                className='block text-base font-medium text-gray-700 mb-2'
               >
                 Email Address
               </label>
@@ -103,7 +107,7 @@ export default function ForgotPasswordPage() {
                     }
                   }}
                   placeholder='Enter your email'
-                  className={`pl-10 h-12 bg-gray-50 border-gray-200 focus:border-orange-400 focus:ring-orange-400 ${
+                  className={`pl-10 h-12 bg-gray-50 border-gray-200 focus:border-[#0743A2] focus:ring-[#0743A2] rounded-4xl ${
                     errors.email
                       ? "border-red-500 focus:border-red-500 focus:ring-red-500"
                       : ""
@@ -119,7 +123,7 @@ export default function ForgotPasswordPage() {
             {/* Submit Button */}
             <Button
               type='submit'
-              className='w-full h-12 bg-orange-400 hover:bg-orange-500 text-white font-medium rounded-lg transition-colors'
+              className='w-full h-11 button'
               disabled={isLoading}
             >
               {isLoading ? "Sending..." : "Send OTP"}
@@ -132,7 +136,7 @@ export default function ForgotPasswordPage() {
               Already have an account?{" "}
               <Link
                 href='/auth/signin'
-                className='text-orange-400 hover:text-orange-500 font-medium transition-colors'
+                className='text-[#0743A2] hover:text-[#033585] font-medium transition-colors'
               >
                 Sign in
               </Link>

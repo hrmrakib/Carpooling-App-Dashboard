@@ -37,7 +37,7 @@
   --color-sidebar-active-color: #ffffff;
 
   --color-header-bg: #27484c;
-  --color-body-bg: #E6ECF6;
+  --color-body-bg: #e6ecf6;
   --color-body-color: #e0e0e0;
 
   --color-table-header-bg: #0743a2;
@@ -99,6 +99,14 @@
 html,
 body {
   @apply bg-body-bg text-body-color;
+}
+
+.button {
+  @apply inline-flex h-14 items-center justify-center gap-2 rounded-lg 
+         bg-[#0743A2] px-8 text-xl font-bold text-white 
+         transition-all duration-200 cursor-pointer hover:bg-[#033f83]
+         hover:shadow-lg hover:shadow-[#3B82F6]/50 active:bg-[#023979]
+        active:shadow-lg active:shadow-[#3B82F6]/50 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none;
 }
 
 /* @custom-variant dark (&:is(.dark *)); */
