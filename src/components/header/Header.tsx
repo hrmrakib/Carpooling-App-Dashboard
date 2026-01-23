@@ -25,7 +25,7 @@ const Header = () => {
     return null;
   }
   return (
-    <div className='bg-[#0743A2] border-b border-gray-200 rounded-xl'>
+    <div className='bg-[#0743A2] border-b border-gray-200 rounded-xl m-6'>
       <div className='max-w-8xl mx-auto px-6'>
         <div className='flex items-center justify-between py-6'>
           <div>

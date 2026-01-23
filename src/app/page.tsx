@@ -204,7 +204,7 @@ export default function Dashboard() {
   const periods = ["Day", "Week", "Month", "Year"];
 
   return (
-    <div className='min-h-screen bg-transparent'>
+    <div className='min-h-screen bg-transparent p-6'>
       {/* Main Content */}
       <div className='py-8'>
         {/* Stats Cards */}

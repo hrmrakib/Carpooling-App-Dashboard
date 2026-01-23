@@ -137,7 +137,7 @@ export default function ForgotPasswordPage() {
             <p className='text-gray-600 text-sm'>
               Already have an account?{" "}
               <Link
-                href='/auth/signin'
+                href='/login'
                 className='text-[#0743A2] hover:text-[#033585] font-medium transition-colors'
               >
                 Sign in

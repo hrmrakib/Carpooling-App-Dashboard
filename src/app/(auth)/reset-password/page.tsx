@@ -26,8 +26,8 @@ export default function ResetPasswordPage() {
 
     if (!formData.password) {
       newErrors.password = "Password is required";
-    } else if (formData.password.length < 8 || formData.password.length > 10) {
-      newErrors.password = "Password must be 8-10 characters long";
+    } else if (formData.password.length < 6 || formData.password.length > 10) {
+      newErrors.password = "Password must be min 6 characters long";
     }
 
     if (!formData.confirmPassword) {
@@ -52,7 +52,7 @@ export default function ResetPasswordPage() {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Redirect to sign in page after successful password reset
-      router.push("/auth/signin");
+      router.push("/login");
     } catch (error) {
       console.error("Password reset failed:", error);
     } finally {
@@ -120,7 +120,7 @@ export default function ResetPasswordPage() {
                   onChange={(e) =>
                     handleInputChange("password", e.target.value)
                   }
-                  className={`pl-10 pr-10 h-12 bg-gray-50 border-gray-200 rounded-4xl ${
+                  className={`pl-10 pr-10 h-12 bg-gray-50 text-black border-gray-200 rounded-4xl ${
                     errors.password ? "border-red-500" : ""
                   }`}
                 />
@@ -159,7 +159,7 @@ export default function ResetPasswordPage() {
                   onChange={(e) =>
                     handleInputChange("confirmPassword", e.target.value)
                   }
-                  className={`pl-10 pr-10 h-12 bg-gray-50 border-gray-200 rounded-4xl ${
+                  className={`pl-10 pr-10 h-12 bg-gray-50 text-black border-gray-200 rounded-4xl ${
                     errors.confirmPassword ? "border-red-500" : ""
                   }`}
                 />

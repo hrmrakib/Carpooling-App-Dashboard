@@ -77,7 +77,7 @@ export default function Home() {
   }
 
   return (
-    <main className='min-h-screen bg-white my-4 rounded-xl'>
+    <main className='min-h-screen bg-white my-4 rounded-xl m-6'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
         {/* Header */}
         <div className='flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8'>

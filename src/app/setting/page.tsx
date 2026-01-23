@@ -13,7 +13,7 @@ export default function SettingsPage() {
   ];
 
   return (
-    <div className='flex min-h-screen bg-gray-50 p-6'>
+    <div className='flex min-h-screen bg-gray-50 rounded-2xl m-6'>
       <div className='flex-1 w-full'>
         <main className='w-full p-4 md:p-6'>
           <div className='max-w-3xl mx-auto'>
